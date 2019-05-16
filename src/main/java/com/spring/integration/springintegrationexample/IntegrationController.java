@@ -16,7 +16,10 @@ public class IntegrationController {
 
     @PostMapping("sample")
     public Mono<IntegrationSample> saveSample(@RequestBody final List<IntegrationSample> sample) {
-        gateway.addSample(sample);
+        IntegrationGateway integrationGateway = gateway;
+        for (IntegrationSample integrationSample : sample) {
+            integrationGateway.addSample(integrationSample, "test");
+        }
         return Mono.just(sample.get(0));
     }
 

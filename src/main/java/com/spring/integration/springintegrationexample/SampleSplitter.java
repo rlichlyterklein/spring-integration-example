@@ -8,7 +8,7 @@ import java.util.List;
 @MessageEndpoint
 public class SampleSplitter {
 
-    @Splitter(inputChannel = "sample", outputChannel = "textInChannel")
+    @Splitter(inputChannel = "sample2", outputChannel = "textInChannel")
     public String getSample(List<IntegrationSample> sampleList) {
         return sampleList.remove(0).getName();
     }

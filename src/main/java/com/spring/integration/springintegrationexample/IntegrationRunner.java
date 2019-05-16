@@ -16,7 +16,8 @@ public class IntegrationRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         String test = "Hello World";
-        Message<String> build = MessageBuilder.withPayload(test).build();
+        Message<String> build = MessageBuilder
+                .withPayload(test).setHeader("test-key", "header").build();
         this.textInChannel.send(build);
     }
 }
